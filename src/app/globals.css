@@ -1,49 +1,89 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "tailwindcss";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --color-neo-yellow: #FFE27C;
+  --color-neo-pink: #FF66C4;
+  --color-neo-green: #39FF14;
+  --color-neo-blue: #00D2FF;
+  --color-neo-dark: #121212;
+  --color-neo-gray: #7F7F7F;
+
+  --animate-damage-flash: damage-flash 0.3s ease-out;
+  --animate-heal-pulse: heal-pulse 0.3s ease-out;
+
+  @keyframes damage-flash {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(239, 68, 68, 0.4); }
+  }
+  @keyframes heal-pulse {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(34, 197, 94, 0.4); }
   }
 }
 
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+:root {
+  --background: #FFE27C; /* Neo brutalist yellow as main backdrop */
+  --foreground: #121212;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Neo-brutalist custom utilities */
+.neo-border {
+  border: 4px solid #121212;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.neo-shadow {
+  box-shadow: 4px 4px 0px 0px #121212;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.neo-shadow-lg {
+  box-shadow: 8px 8px 0px 0px #121212;
+}
+
+.neo-button {
+  background-color: #ffffff;
+  color: #121212;
+  border: 4px solid #121212;
+  box-shadow: 4px 4px 0px 0px #121212;
+  font-weight: 800;
+  transition: all 0.15s ease-in-out;
+}
+
+.neo-button:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #121212;
+}
+
+.neo-button:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #121212;
+}
+
+.neo-button:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.neo-input {
+  border: 4px solid #121212;
+  padding: 12px;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #121212;
+  outline: none;
+  box-shadow: 2px 2px 0px 0px #121212;
+}
+
+.neo-input:focus {
+  box-shadow: 4px 4px 0px 0px #121212;
+  background-color: #fffbeb;
 }
